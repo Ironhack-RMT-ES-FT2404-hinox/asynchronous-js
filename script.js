@@ -173,7 +173,7 @@ function pedirUnLibroPromesa(bookId) {
 }
 
 
-
+/*
 
 //* Como resolver promesas con .then() & .catch()
 
@@ -250,3 +250,38 @@ Promise.allSettled( [
   console.log(respuestaDeTodasLasPromesas)
   // el allSettled no requiere de un .catch, toda la info esta en el .then (si falla o si no falla)
 })
+
+*/
+
+// resolviendo promesas con async/await
+// obligatoriamente debemos envolver la logica en una funcion
+
+
+async function getBooks () {
+  // el async le indica a JS que está funcion resolverá procesos asincronos
+
+  try {
+    // intenta hacer estas operaciones asincronas
+
+    // aqui hacemos llamadas a la API
+    const response = await pedirUnLibroPromesa(1) 
+    // con el await, JS ESPERA el tiempo necesario en que la promesa resuelva, y nos devuelve la respuesta
+    console.log(response)
+
+    const response2 = await pedirUnLibroPromesa(555)
+    console.log(response2)
+
+    const response3 = await  pedirUnLibroPromesa(3)
+    console.log(response3)
+
+  } catch(error) {
+    // si no puedes, si algo falla, ejecuta esto
+    console.log(error)
+
+  }
+
+
+}
+
+getBooks() //! NO SE OLVIDEN DE EJECUTAR LA FUNCION
+
